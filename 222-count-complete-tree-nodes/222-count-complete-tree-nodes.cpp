@@ -12,31 +12,19 @@
 class Solution {
 public:
     int countNodes(TreeNode* root) {
-        int count=0;
-        if(!root)
+        if(root==NULL)
             return 0;
-        queue<TreeNode*> q;
-        TreeNode* temp;
-        q.push(root);
+        int left_hight=0,right_hight=0;
+        TreeNode *ptr1=root,*ptr2=root;
         
-        while(q.size())
-        {
-            int n=q.size();
-            for(int i=0;i<n;i++)
-            {
-                temp=q.front();
-                q.pop();
-                if(temp->left)
-                {
-                    q.push(temp->left);
-                }
-                if(temp->right)
-                {
-                    q.push(temp->right);
-                }
-            }
-            count+=n;
-        }
-        return count;
+        while(ptr1!=NULL) //Count the Left hight
+            ptr1=ptr1->left,left_hight++;
+        while(ptr2!=NULL) //Count the Right hight
+            ptr2=ptr2->right,right_hight++;
+        
+        if(left_hight==right_hight)
+            return pow(2,left_hight)-1;
+        
+        return 1+countNodes(root->left)+countNodes(root->right);
     }
 };
