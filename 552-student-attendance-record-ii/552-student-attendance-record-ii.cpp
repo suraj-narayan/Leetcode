@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    int dp[100001][3][4];
+    int dp[100001][2][3];
     
     int MOD=1e9+7;
     
