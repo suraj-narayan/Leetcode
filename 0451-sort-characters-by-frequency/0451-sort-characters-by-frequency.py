@@ -6,6 +6,5 @@ class Solution:
             ump[c] += 1
         str_list = [(value, key) for key, value in ump.items()]
         str_list.sort(reverse = True)
-        str_values = [key*key2 for (key, key2) in str_list]
-        return "".join(str_values)
+        return "".join([key*key2 for (key, key2) in str_list])
         
